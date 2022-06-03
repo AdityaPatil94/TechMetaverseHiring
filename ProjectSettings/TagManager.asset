@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - Door
+  - Pathpoint
+  - MultiPathpoint
   layers:
   - Default
   - TransparentFX
