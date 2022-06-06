@@ -10,7 +10,7 @@ namespace EdgarDev
     {
 		public static string PROJECT_MASTER_NAME = "NPCTool";
 
-		[InitializeOnLoadMethod]
+		//[InitializeOnLoadMethod]
 		public static void ImportDependencies()
 		{
 			// check if master project

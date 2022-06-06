@@ -31,8 +31,9 @@ namespace EdgarDev.NPCTool.Utils
 			if (movable.m_MoveEvent == null)
 				movable.m_MoveEvent = new NPCMoveEvent();
 
+#if UnityEditor
 			UnityEditor.Events.UnityEventTools.AddPersistentListener(movable.m_MoveEvent, motor.Move);
-
+#endif
 			DestroyImmediate(this);
 		}
 	}

@@ -68,7 +68,7 @@ namespace Photon.Pun.Demo.PunBasics
 				if (PlayerManager.LocalPlayerInstance==null)
 				{
 				    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-					Vector3 Temp = new Vector3(Random.Range(0,5), 5f, Random.Range(-5, 5));
+					Vector3 Temp = new Vector3(Random.Range(0,5), 1f, Random.Range(-5, 5));
 					// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 					PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
 				}else{
@@ -145,6 +145,11 @@ namespace Photon.Pun.Demo.PunBasics
 		{
 			PhotonNetwork.LeaveRoom();
 		}
+
+		public void ChangeRoom ()
+        {
+			SceneManager.LoadScene("InterviewRoom");
+        }
 
 		public void QuitApplication()
 		{

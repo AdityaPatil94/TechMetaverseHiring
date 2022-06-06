@@ -126,6 +126,7 @@ namespace StarterAssets
 
         private void Awake()
         {
+            DontDestroyOnLoad(this.gameObject);
             // get a reference to our main camera
             if (_mainCamera == null)
             {
@@ -160,11 +161,6 @@ namespace StarterAssets
             GroundedCheck();
             JumpAndGravity();
             Move();
-            //if (PlayerManager.LocalPlayerInstance == null)
-            {
-                
-            }
-                
         }
 
         private void LateUpdate()
