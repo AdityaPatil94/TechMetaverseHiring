@@ -11,6 +11,8 @@ namespace Photon.Pun.Demo.Asteroids
         [Header("Login Panel")]
         public GameObject LoginPanel;
 
+        [Header("Avatar Link")]
+        public InputField AvatarLink;
         public InputField PlayerNameInput;
 
         [Header("Selection Panel")]
@@ -51,6 +53,7 @@ namespace Photon.Pun.Demo.Asteroids
             roomListEntries = new Dictionary<string, GameObject>();
             
             PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
+            AvatarLink.text = "https://d1a370nemizbjq.cloudfront.net/86ead872-ae8a-4e5e-993d-dbe362814527.glb";
         }
 
         #endregion
@@ -245,15 +248,15 @@ namespace Photon.Pun.Demo.Asteroids
         public void OnLoginButtonClicked()
         {
             string playerName = PlayerNameInput.text;
-
-            if (!playerName.Equals(""))
+            string PlayerAvatar = AvatarLink.text;
+            if (!playerName.Equals("") && !PlayerAvatar.Equals(""))
             {
                 PhotonNetwork.LocalPlayer.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
             }
             else
             {
-                Debug.LogError("Player Name is invalid.");
+                Debug.LogError("Player Name or Avatar link is invalid.");
             }
         }
 

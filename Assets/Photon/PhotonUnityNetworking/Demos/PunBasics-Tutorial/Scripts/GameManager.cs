@@ -1,34 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Launcher.cs" company="Exit Games GmbH">
-//   Part of: Photon Unity Networking Demos
-// </copyright>
-// <summary>
-//  Used in "PUN Basic tutorial" to handle typical game management requirements
-// </summary>
-// <author>developer@exitgames.com</author>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Photon.Pun;
 using Photon.Realtime;
 
-namespace Photon.Pun.Demo.PunBasics
-{
-	#pragma warning disable 649
-
-	/// <summary>
-	/// Game manager.
-	/// Connects and watch Photon Status, Instantiate Player
-	/// Deals with quiting the room and the game
-	/// Deals with level loading (outside the in room synchronization)
-	/// </summary>
 	public class GameManager : MonoBehaviourPunCallbacks
     {
 
 		#region Public Fields
 
 		static public GameManager Instance;
+		//public AvatarHandler avatarHandler;
 
 		#endregion
 
@@ -69,8 +51,10 @@ namespace Photon.Pun.Demo.PunBasics
 				{
 				    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 					Vector3 Temp = new Vector3(Random.Range(0,5), 1f, Random.Range(-5, 5));
-					// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-					PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
+				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+				
+				//AvaHa .LoadAvatarTest();
+				PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
 				}else{
 
 					Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
@@ -175,5 +159,3 @@ namespace Photon.Pun.Demo.PunBasics
 		#endregion
 
 	}
-
-}

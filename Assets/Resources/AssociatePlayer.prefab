@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2379475147030502686}
   - component: {fileID: 28523746411314570}
   - component: {fileID: 7715318348358558949}
+  - component: {fileID: 5435390902497492108}
   m_Layer: 8
   m_Name: PlayerController
   m_TagString: Player
@@ -625,6 +626,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fac77b304554f238a61572f5720187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5435390902497492108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30465930551256580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7186881e50c6f4d82b5243ab8ae297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  avatarUrl: 
+  Player: {fileID: 0}
+  PlayerAvatar: {fileID: 0}
+  OwnerActorNum: 0
+  Test: {fileID: 0}
+  stringArray: []
 --- !u!1 &99093376224165079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,6 +3514,14 @@ PrefabInstance:
     - target: {fileID: 5346396900554491179, guid: 29bc19fe2926b0b4990d7cd03e8e15e3, type: 3}
       propertyPath: m_Name
       value: AssociateCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346396900554491179, guid: 29bc19fe2926b0b4990d7cd03e8e15e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346396900554491179, guid: 29bc19fe2926b0b4990d7cd03e8e15e3, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5346396900554491172, guid: 29bc19fe2926b0b4990d7cd03e8e15e3, type: 3}

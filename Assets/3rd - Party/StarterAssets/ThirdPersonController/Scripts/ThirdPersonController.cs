@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-using Photon.Pun.Demo.PunBasics;
+using Photon.Pun;
+using ReadyPlayerMe;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -13,7 +14,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : MonoBehaviourPunCallbacks
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -127,6 +128,8 @@ namespace StarterAssets
         private void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
+            //var avatarLoader = new AvatarLoader();
+            //AvatarHandler.Instance.avatarLoader.OnCompleted += SetPlayer;
             // get a reference to our main camera
             if (_mainCamera == null)
             {
@@ -134,6 +137,15 @@ namespace StarterAssets
             }
         }
 
+        public void SetPlayer(object sender, CompletionEventArgs args)
+        {
+            Debug.Log("Is Mine Player");
+            if (photonView.IsMine)
+            {
+                Debug.Log("Mine Player");
+                //AvatarHandler.Instance.SetPlayer(this.gameObject);
+            }
+        }
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
