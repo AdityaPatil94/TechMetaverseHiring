@@ -124,7 +124,7 @@ namespace Photon.Chat.Demo
             this.Title.SetActive(true);
             this.ChatPanel.gameObject.SetActive(false);
             this.ConnectingLabel.SetActive(false);
-
+            UserName = PhotonNetwork.LocalPlayer.NickName;
             if (string.IsNullOrEmpty(this.UserName))
             {
                 this.UserName = "user" + Environment.TickCount%99; //made-up username
@@ -136,9 +136,10 @@ namespace Photon.Chat.Demo
 
             bool appIdPresent = !string.IsNullOrEmpty(this.chatAppSettings.AppIdChat);
 
-            this.missingAppIdErrorPanel.SetActive(!appIdPresent);
+            //this.missingAppIdErrorPanel.SetActive(!appIdPresent);
             this.UserIdFormPanel.gameObject.SetActive(appIdPresent);
-
+            
+            Connect();
             if (!appIdPresent)
             {
                 Debug.LogError("You need to set the chat app ID in the PhotonServerSettings file in order to continue.");

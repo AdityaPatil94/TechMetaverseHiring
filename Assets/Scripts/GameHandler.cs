@@ -59,7 +59,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				
 				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 				//AvatarHandler.Instance.LoadAvatar();
-				Vector3 Temp = new Vector3(Random.Range(0, 5), 1f, Random.Range(-5, 5));
+				Vector3 Temp = new Vector3(Random.Range(-5, 5), 0f, Random.Range(-2, 6));
 				PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
 			}
 			else
