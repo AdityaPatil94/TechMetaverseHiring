@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: e22525730509d45c1bb350dca27e11a8
+guid: 5e535f4971d0c40e69cb1b21c10e62a6
 folderAsset: yes
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
-  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
-  isExplicitlyReferenced: 0
-  validateReferences: 1
   platformData:
   - first:
       '': Any
@@ -23,6 +20,7 @@ PluginImporter:
         Exclude Linux64: 1
         Exclude LinuxUniversal: 1
         Exclude OSXUniversal: 1
+        Exclude WebGL: 1
         Exclude Win: 1
         Exclude Win64: 1
         Exclude iOS: 1
@@ -98,7 +96,6 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        AddToEmbeddedBinaries: false
         CompileFlags: 
         FrameworkDependencies: 
   userData: 

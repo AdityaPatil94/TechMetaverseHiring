@@ -42,10 +42,10 @@ namespace agora_gaming_rtc
         private bool _initialized = false;
         public bool _enableFlipHorizontal = false;
         public bool _enableFlipVertical = false;
-        public uint videoFps = 30; 
+        public uint videoFps = 30;
         [SerializeField]
         AgoraVideoSurfaceType VideoSurfaceType = AgoraVideoSurfaceType.Renderer;
-        
+
         void Start()
         {
             // render video
@@ -71,10 +71,10 @@ namespace agora_gaming_rtc
             }
             else
             {
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 // this only applies to Editor, in case of material is too dark
                 UpdateShader();
-                #endif
+#endif
                 _initialized = true;
             }
         }
@@ -82,8 +82,8 @@ namespace agora_gaming_rtc
         // Update is called once per frame
         void Update()
         {
-            #if UNITY_STANDALONE_WIN || UNITY_EDITOR || UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE
-            if (updateVideoFrameCount >= videoFps/videoFilter)
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR || UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE
+            if (updateVideoFrameCount >= videoFps / videoFilter)
             {
                 updateVideoFrameCount = 0;
             }
@@ -114,7 +114,7 @@ namespace agora_gaming_rtc
                         }
                         else
                         {
-                            tmpi = videoRender.UpdateVideoRawData(mChannelId, uid, data, ref defWidth, ref defHeight);    
+                            tmpi = videoRender.UpdateVideoRawData(mChannelId, uid, data, ref defWidth, ref defHeight);
                         }
                     }
                     else
@@ -142,13 +142,13 @@ namespace agora_gaming_rtc
                     }
                 }
                 else
-                { 
+                {
                     if (nativeTexture == null)
                     {
                         Debug.LogError("You didn't initialize native texture, please remove native texture and initialize it by agora.");
                         return;
                     }
-      
+
                     int width = 0;
                     int height = 0;
                     int tmpi = -1;
@@ -173,14 +173,16 @@ namespace agora_gaming_rtc
 
                     try
                     {
-                        if (width == defWidth  && height == defHeight)
+                        if (width == defWidth && height == defHeight)
                         {
                             /*
                             *  if width and height don't change ,we only need to update data for texture, do not need to create Texture.
                             */
                             nativeTexture.LoadRawTextureData(data, (int)width * (int)height * 4);
                             nativeTexture.Apply();
-                        } else {
+                        }
+                        else
+                        {
                             /* 
                             * if width or height changed ,we need to resize texture.
                             */
@@ -204,7 +206,7 @@ namespace agora_gaming_rtc
                     ApplyTexture(null);
                 }
             }
-            #endif
+#endif
         }
 
         void OnDestroy()
@@ -246,15 +248,18 @@ namespace agora_gaming_rtc
 
         /** Sets the video rendering frame rate.
         * 
-        * @note 
+        * @note         
+	    *   High-level logic only.  Non-effective until native code updated in the future.
+        *
         * - Ensure that you call this method in the main thread.
         * - Ensure that you call this method before binding VideoSurface.cs.
         * 
         * @param fps The real video refreshing frame rate of the program.
         */
+        [Obsolete("Invoking future API will have no effect")]
         public void SetGameFps(uint fps)
         {
-            videoFps = fps; 
+            videoFps = fps;
         }
 
         // call this to render video stream from uid on this game object
@@ -294,7 +299,7 @@ namespace agora_gaming_rtc
          */
 
         public void SetForMultiChannelUser(string channelId, uint uid)
-        { 
+        {
             if (IRtcEngine.QueryEngine() != null)
             {
                 isMultiChannelWant = true;
@@ -409,7 +414,7 @@ namespace agora_gaming_rtc
         /*
          *
          */
-        private string mChannelId = "_0_";    
+        private string mChannelId = "_0_";
 
         /*
         *if disabled, then no rendering happens

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/AgoraAIDenoiseExtension.framework/Versions/A/AgoraAIDenoiseExtension</key>
 		<data>
-		Ow6DKmnR4VLu4cfMNu2Zsh89l+U=
+		CbPcpPDKTzHW5ilz6ggYjJ4Gxlo=
 		</data>
 		<key>Resources/AgoraAIDenoiseExtension.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/AgoraCore.framework/Versions/A/AgoraCore</key>
 		<data>
-		F++YGhLdo0Ll5Eb/+HY3PidMR+c=
+		so7M2IkkpFnCFSVcK/8bgMV13Ro=
 		</data>
 		<key>Resources/AgoraCore.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -28,9 +28,21 @@
 		<data>
 		iXQyClps6RdcCnBmraOREu7+1+I=
 		</data>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/AgoraDav1dExtension</key>
+		<data>
+		KPulxsYAl9H/vmKU3K5IpOdTtYk=
+		</data>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/Resources/Info.plist</key>
+		<data>
+		AvB9o/Anh4tuywzSuc17iUTfCFo=
+		</data>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<data>
+		hJUHIWiEngmSJSDilVk1frWmimg=
+		</data>
 		<key>Resources/AgoraRtcKit.framework/Versions/A/AgoraRtcKit</key>
 		<data>
-		nuvzOg82rtJUKKyOqgFbvniHIbo=
+		B0sYKLJH1HlEg5rb1F+7Ij1/2wA=
 		</data>
 		<key>Resources/AgoraRtcKit.framework/Versions/A/Headers/AgoraAudioFrame.h</key>
 		<data>
@@ -114,7 +126,7 @@
 		</data>
 		<key>Resources/AgoraSoundTouch.framework/Versions/A/AgoraSoundTouch</key>
 		<data>
-		si28E+msxQmWqQpM4AaAGXMZAbo=
+		2KRhcXE0FaMp/PhYhqOPV2ffmn0=
 		</data>
 		<key>Resources/AgoraSoundTouch.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -124,9 +136,21 @@
 		<data>
 		hr2HQNUJAN+EloPra0+FJKjuumo=
 		</data>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/AgoraVideoSegmentationExtension</key>
+		<data>
+		G9BbP8evn4lTvusN8sTDBbJU2kk=
+		</data>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/Resources/Info.plist</key>
+		<data>
+		vp+EtNTleu90LQ3ucp0Y6sMaXW0=
+		</data>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<data>
+		f95t/FHXTme5gSXlJgkXSU2BSU4=
+		</data>
 		<key>Resources/Agorafdkaac.framework/Versions/A/Agorafdkaac</key>
 		<data>
-		PAOXjbZmylTiQylXxM6QTpj/ZlE=
+		JdCCSl4es6I/fYuGCtaOCi0sZGo=
 		</data>
 		<key>Resources/Agorafdkaac.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -136,9 +160,33 @@
 		<data>
 		KOYSMMrSQCnHTIQ0WTks8kptdhI=
 		</data>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/Agoraffmpeg</key>
+		<data>
+		tDYrW5Be1I7HfLm8gLBUIbywLbY=
+		</data>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/Resources/Info.plist</key>
+		<data>
+		dYCiVGpbe51xK25fwxJ0gIDZso4=
+		</data>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<data>
+		o+FTqHbymV8qNF5luHOE81dbjeA=
+		</data>
 		<key>Resources/Info.plist</key>
 		<data>
 		S8cdZeGUFYs4ptrNtnO6/AAcsSQ=
+		</data>
+		<key>Resources/av1.framework/Versions/A/Resources/Info.plist</key>
+		<data>
+		mGzSZOuNrrgysIV45/JkgkanZsA=
+		</data>
+		<key>Resources/av1.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<data>
+		cyL8gpb6e8zlFGKj+nGvjW4WEy8=
+		</data>
+		<key>Resources/av1.framework/Versions/A/av1</key>
+		<data>
+		+nMu/FDeqYPnvcR488/zJZYYuFs=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -157,7 +205,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7jsBHv3F/bTlzgYEyDd9ev63Uqo3ny38rkXPqg/vq+0=
+			v6JAYiy9Y78eyWl8BriEJJE3BwQmc4YLTpQj5eRg5tA=
 			</data>
 		</dict>
 		<key>Resources/AgoraAIDenoiseExtension.framework/Versions/A/Resources/Info.plist</key>
@@ -193,7 +241,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			75ccetSHSLQQsDDglIaLs5HRvwjGr9jqJSN+hV17jOA=
+			j+rROzhQ0hHq2OpkBCvSdDMlEQuK9h2h3YLZZnG5qAk=
 			</data>
 		</dict>
 		<key>Resources/AgoraCore.framework/Versions/A/Resources/Info.plist</key>
@@ -211,6 +259,42 @@
 			</data>
 		</dict>
 		<key>Resources/AgoraCore.framework/Versions/Current</key>
+		<dict>
+			<key>symlink</key>
+			<string>A</string>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/AgoraDav1dExtension</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/AgoraDav1dExtension</string>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/Resources</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Resources</string>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/AgoraDav1dExtension</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Unf1IvPicI9+pZarzdTp96hHMBXbCoHz/VxwoI4ALyc=
+			</data>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/Resources/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CS2s+JfRvBDLAnowKwyVZHP6vDEFQYvUjdMs93+qSDY=
+			</data>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uS50kyeK0vK9QdVAuEaezjXzr1h14TsoyHwxmLnC9f4=
+			</data>
+		</dict>
+		<key>Resources/AgoraDav1dExtension.framework/Versions/Current</key>
 		<dict>
 			<key>symlink</key>
 			<string>A</string>
@@ -239,7 +323,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S+QUH0cd4do2gB7P74JOI9DSy8mmVJ+Q1brMOn/7L/w=
+			VhOmVFRMGeU87vGQ9RrHwyefxRmikl1iYZbjsUb4sxA=
 			</data>
 		</dict>
 		<key>Resources/AgoraRtcKit.framework/Versions/A/Headers/AgoraAudioFrame.h</key>
@@ -401,7 +485,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KdD9bhjU/bnzCC8Sd255et+OKOYnWUDbFPz2b1fFpKI=
+			B0dc8JqtnoxBWKYTzJyCa88Zm6Olg/f069DqwwMLFec=
 			</data>
 		</dict>
 		<key>Resources/AgoraSoundTouch.framework/Versions/A/Resources/Info.plist</key>
@@ -423,6 +507,42 @@
 			<key>symlink</key>
 			<string>A</string>
 		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/AgoraVideoSegmentationExtension</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/AgoraVideoSegmentationExtension</string>
+		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Resources</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Resources</string>
+		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/AgoraVideoSegmentationExtension</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TboMEVrOvodhAjSAtWEt1SWkggjldx8LxaJXiM9gC0w=
+			</data>
+		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/Resources/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ocGIOl2VagO0GqE0hGBogVyDH2OTVsI2WH9emG+vIjk=
+			</data>
+		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TbX60LZA8noj8mT7ZSdO+UH6DtRWH2Gpv0N3zmB437g=
+			</data>
+		</dict>
+		<key>Resources/AgoraVideoSegmentationExtension.framework/Versions/Current</key>
+		<dict>
+			<key>symlink</key>
+			<string>A</string>
+		</dict>
 		<key>Resources/Agorafdkaac.framework/Agorafdkaac</key>
 		<dict>
 			<key>symlink</key>
@@ -437,7 +557,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tG6lwZ6+XgZ4W9rjtVLltIZFUsK+cHS1g8zxVgS8hHY=
+			QcsTNSkHiJnSBJf+qu/g/Te58bCg8CNLpE96bsdnxGw=
 			</data>
 		</dict>
 		<key>Resources/Agorafdkaac.framework/Versions/A/Resources/Info.plist</key>
@@ -459,12 +579,84 @@
 			<key>symlink</key>
 			<string>A</string>
 		</dict>
+		<key>Resources/Agoraffmpeg.framework/Agoraffmpeg</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Agoraffmpeg</string>
+		</dict>
+		<key>Resources/Agoraffmpeg.framework/Resources</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Resources</string>
+		</dict>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/Agoraffmpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			al8+7uuwsY0GcTo82L/0/vWhWxpfrbGOERm1Ls3x/no=
+			</data>
+		</dict>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/Resources/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GaORf47Bm6jr0aRuXHkuE+bK9DaYGFfbE0/011q69Bs=
+			</data>
+		</dict>
+		<key>Resources/Agoraffmpeg.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			72/uObZktMHrtx9cOne3KCD6k7hYnSQimZwV4Vy3pP8=
+			</data>
+		</dict>
+		<key>Resources/Agoraffmpeg.framework/Versions/Current</key>
+		<dict>
+			<key>symlink</key>
+			<string>A</string>
+		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			NOJw8u0Jso9lZjJzOihLQvJrvS+cQKdiTFNHFOpYbvk=
 			</data>
+		</dict>
+		<key>Resources/av1.framework/Resources</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Resources</string>
+		</dict>
+		<key>Resources/av1.framework/Versions/A/Resources/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8drrHlHQ3FxSh78J73qkXXRgHJ33G0DzpB1nQPttaSQ=
+			</data>
+		</dict>
+		<key>Resources/av1.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			C4RR8DAxdYhKKZ5fVzeHQkZYytF6EPno6KJWUO3FftI=
+			</data>
+		</dict>
+		<key>Resources/av1.framework/Versions/A/av1</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vPDGmqhnTfl3i9Q+islX9mhlJn7tzx5DMgjSuUXtf08=
+			</data>
+		</dict>
+		<key>Resources/av1.framework/Versions/Current</key>
+		<dict>
+			<key>symlink</key>
+			<string>A</string>
+		</dict>
+		<key>Resources/av1.framework/av1</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/av1</string>
 		</dict>
 	</dict>
 	<key>rules</key>
