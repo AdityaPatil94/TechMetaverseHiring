@@ -1286,6 +1286,7 @@ MonoBehaviour:
   WhiteBoardText: {fileID: 0}
   WhiteBoardInputField: {fileID: 1306221077337655412}
   PV: {fileID: 0}
+  InputCanvas: {fileID: 7525161547289968852}
   test: []
 --- !u!114 &2698854434285237695
 MonoBehaviour:

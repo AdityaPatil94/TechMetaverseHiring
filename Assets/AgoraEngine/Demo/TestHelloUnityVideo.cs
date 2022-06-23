@@ -19,7 +19,7 @@ public class TestHelloUnityVideo
 
     // a token is a channel key that works with a AppID that requires it. 
     // Generate one by your token server or get a temporary token from the developer console
-    private string token = "00626b40b22a58244b8a27cbb74f3a39518IACKe/oFdhoKHST6RwYFhjmDFjea3zrqOUqKWDD4arpL3XJftpAAAAAAEACJVdSDb4C1YgEAAQBvgLVi";
+    private string token = "00626b40b22a58244b8a27cbb74f3a39518IABoKuYnz0eSEqqEh24rOC+m0l7CySG8m4HLON2EtY+6FXJftpAAAAAAEACDxJolI6G1YgEAAQAkobVi";
 
     // load agora engine
     public void loadEngine(string appId)
@@ -177,8 +177,8 @@ public class TestHelloUnityVideo
     private void onJoinChannelSuccess(string channelName, uint uid, int elapsed)
     {
         Debug.Log("JoinChannelSuccessHandler: uid = " + uid);
-        GameObject textVersionGameObject = GameObject.Find("VersionText");
-        textVersionGameObject.GetComponent<Text>().text = "SDK Version : " + getSdkVersion();
+        //GameObject textVersionGameObject = GameObject.Find("VersionText");
+        //textVersionGameObject.GetComponent<Text>().text = "SDK Version : " + getSdkVersion();
     }
 
     // When a remote user joined, this delegate will be called. Typically

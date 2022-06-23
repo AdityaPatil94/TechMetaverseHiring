@@ -26,7 +26,7 @@ public class TestHome : MonoBehaviour
     // Get your own App ID at https://dashboard.agora.io/
     [SerializeField]
     private string AppID = "your_appid";
-
+    public string ChannelName = "Test Call";
     void Awake()
     {
 #if (UNITY_2018_3_OR_NEWER && UNITY_ANDROID)
@@ -41,6 +41,7 @@ public class TestHome : MonoBehaviour
     void Start()
     {
         CheckAppId();
+        onJoinButtonClicked();
     }
 
     void Update()
@@ -88,8 +89,8 @@ public class TestHome : MonoBehaviour
     public void onJoinButtonClicked()
     {
         // get parameters (channel name, channel profile, etc.)
-        GameObject go = GameObject.Find("ChannelName");
-        InputField field = go.GetComponent<InputField>();
+        //GameObject go = GameObject.Find("ChannelName");
+        //InputField field = go.GetComponent<InputField>();
 
         // create app if nonexistent
         if (ReferenceEquals(app, null))
@@ -99,9 +100,10 @@ public class TestHome : MonoBehaviour
         }
 
         // join channel and jump to next scene
-        app.join(field.text);
-        SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
-        SceneManager.LoadScene(PlaySceneName, LoadSceneMode.Single);
+        //app.join(field.text);
+        app.join(ChannelName);
+        //SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
+        //SceneManager.LoadScene(PlaySceneName, LoadSceneMode.Single);
     }
 
     public void onLeaveButtonClicked()

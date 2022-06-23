@@ -81,7 +81,7 @@ public class AvatarHandler : MonoBehaviourPunCallbacks
     }
     private void AvatarLoadingProgressChanged(object sender, ProgressChangeEventArgs args)
     {
-           Debug.Log($"Progress: {args.Progress * 100}%");
+           //Debug.Log($"Progress: {args.Progress * 100}%");
     }
 
     public void SetPlayer(GameObject spawnedPlayer)

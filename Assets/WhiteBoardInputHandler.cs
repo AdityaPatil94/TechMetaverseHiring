@@ -9,6 +9,7 @@ public class WhiteBoardInputHandler : MonoBehaviour
     public TextMeshProUGUI WhiteBoardText;
     public TMP_InputField WhiteBoardInputField;
     public PhotonView PV;
+    public GameObject InputCanvas;
     public TextMeshProUGUI[] test;
     private void Start()
     {
@@ -25,26 +26,28 @@ public class WhiteBoardInputHandler : MonoBehaviour
         }
         
         PV = GetComponent<PhotonView>();
-        if(!PV.IsMine)
+        if (!PV.IsMine)
         {
-            Destroy(this.gameObject);
+            InputCanvas.SetActive(false);
+            WhiteBoardInputField.gameObject.SetActive(false);
         }
     }
 
     public void DisplayText()
     {
         Debug.Log(WhiteBoardInputField);
-        WhiteBoardText.text = WhiteBoardInputField.text;
+       
         if (PV.IsMine)
         {
-            PV.RPC("DisplayLocalText", RpcTarget.All);
+            WhiteBoardText.text = WhiteBoardInputField.text;
+            PV.RPC("DisplayLocalText", RpcTarget.OthersBuffered, WhiteBoardText.text);
         }
     }
 
     [PunRPC]
-    public void DisplayLocalText()
+    public void DisplayLocalText(string Messgae)
     {
-        Debug.Log("RPC PUN");
-        WhiteBoardText.text = WhiteBoardInputField.text;
+        Debug.Log("RPC PUN"+ WhiteBoardInputField.text);
+        WhiteBoardText.text = Messgae;
     }
 }
