@@ -8,6 +8,8 @@ TagManager:
   - Door
   - Pathpoint
   - MultiPathpoint
+  - WhiteBoaardText
+  - WhiteBoardText
   layers:
   - Default
   - TransparentFX

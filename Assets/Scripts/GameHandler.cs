@@ -61,6 +61,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				//AvatarHandler.Instance.LoadAvatar();
 				Vector3 Temp = new Vector3(Random.Range(-5, 5), 0f, Random.Range(-2, 6));
 				PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
+				PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
 			}
 			else
 			{
