@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using ReadyPlayerMe;
+using StarterAssets;
 
 public class GameHandler : MonoBehaviourPunCallbacks
 {
@@ -12,7 +13,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 
 	static public GameHandler Instance;
 	//public AvatarHandler avatarHandler;
-
+	public GameObject FeedBackPanel;
 	#endregion
 
 	#region Private Fields
@@ -23,6 +24,11 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	[SerializeField]
 	private GameObject playerPrefab;
 
+	[SerializeField]
+	private GameObject Player;
+
+	[SerializeField]
+	private ThirdPersonController controller;
 	#endregion
 
 	#region MonoBehaviour CallBacks
@@ -60,7 +66,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 				//AvatarHandler.Instance.LoadAvatar();
 				Vector3 Temp = new Vector3(Random.Range(-5, 5), 0f, Random.Range(-2, 6));
-				PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
+				Player = PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
 				PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
 			}
 			else
@@ -86,7 +92,8 @@ public class GameHandler : MonoBehaviourPunCallbacks
 		// "back" button of phone equals "Escape". quit app if that's pressed
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			QuitApplication();
+			//QuitApplication();
+			GetFeedbackFromUser();
 		}
 	}
 
@@ -143,6 +150,13 @@ public class GameHandler : MonoBehaviourPunCallbacks
 		PhotonNetwork.LeaveRoom();
 	}
 
+	public void StopPlayerInput()
+    {
+		//controller = Player.GetComponentInChildren<ThirdPersonController>();
+		//controller.CanMove(false);
+		Debug.Log("Typing...");
+    }
+
 	public void ChangeRoom()
 	{
 		SceneManager.LoadScene("InterviewRoom");
@@ -151,6 +165,13 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	public void QuitApplication()
 	{
 		Application.Quit();
+
+	}
+
+	public void GetFeedbackFromUser()
+	{
+		FeedBackPanel.SetActive(true);
+
 	}
 
 	#endregion

@@ -18,7 +18,7 @@ namespace Photon.Chat.Demo
 
         public ChatGui chatNewComponent;
 
-        public InputField idInput;
+        //public InputField idInput;
 
         public void Start()
         {
@@ -28,7 +28,7 @@ namespace Photon.Chat.Demo
             string prefsName = PlayerPrefs.GetString(UserNamePlayerPref);
             if (!string.IsNullOrEmpty(prefsName))
             {
-                this.idInput.text = prefsName;
+                //this.idInput.text = prefsName;
             }
         }
 
@@ -45,7 +45,7 @@ namespace Photon.Chat.Demo
         public void StartChat()
         {
             ChatGui chatNewComponent = FindObjectOfType<ChatGui>();
-            chatNewComponent.UserName = this.idInput.text.Trim();
+            //chatNewComponent.UserName = this.idInput.text.Trim();
             chatNewComponent.Connect();
             this.enabled = false;
 

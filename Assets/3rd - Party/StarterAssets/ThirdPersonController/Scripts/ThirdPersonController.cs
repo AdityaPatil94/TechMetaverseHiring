@@ -3,6 +3,7 @@
 using UnityEngine.InputSystem;
 using Photon.Pun;
 using ReadyPlayerMe;
+using TMPro;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -77,6 +78,8 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        public TextMeshProUGUI PlayerName;
+        //public bool canPlayerMove = true;
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -112,6 +115,8 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        private PhotonView PV;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -135,17 +140,19 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+
+            PV = GetComponent<PhotonView>();
         }
 
-        public void SetPlayer(object sender, CompletionEventArgs args)
-        {
-            Debug.Log("Is Mine Player");
-            if (photonView.IsMine)
-            {
-                Debug.Log("Mine Player");
-                //AvatarHandler.Instance.SetPlayer(this.gameObject);
-            }
-        }
+        //public void SetPlayer(object sender, CompletionEventArgs args)
+        //{
+        //    Debug.Log("Is Mine Player");
+        //    if (photonView.IsMine)
+        //    {
+        //        Debug.Log("Mine Player");
+        //        //AvatarHandler.Instance.SetPlayer(this.gameObject);
+        //    }
+        //}
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
@@ -164,15 +171,36 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            if(PV.IsMine)
+            {
+                string name = PhotonNetwork.LocalPlayer.NickName;
+                ShowName(name);
+                PV.RPC("ShowRPCName",RpcTarget.OthersBuffered,name);
+            }
         }
 
+        public void ShowName(string name)
+        {
+            PlayerName.text = name;
+        }
+
+        [PunRPC]
+        public void ShowRPCName(string name)
+        {
+            PlayerName.text = name;
+        }
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
             GroundedCheck();
             //JumpAndGravity();
-            Move();
+            //if(canPlayerMove)
+            {
+                Move();
+            }
+            
         }
 
         private void LateUpdate()
@@ -294,74 +322,74 @@ namespace StarterAssets
             }
         }
 
-        private void JumpAndGravity()
-        {
-            if (Grounded)
-            {
-                // reset the fall timeout timer
-                _fallTimeoutDelta = FallTimeout;
+        //private void JumpAndGravity()
+        //{
+        //    if (Grounded)
+        //    {
+        //        // reset the fall timeout timer
+        //        _fallTimeoutDelta = FallTimeout;
 
-                // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+        //        // update animator if using character
+        //        if (_hasAnimator)
+        //        {
+        //            _animator.SetBool(_animIDJump, false);
+        //            _animator.SetBool(_animIDFreeFall, false);
+        //        }
 
-                // stop our velocity dropping infinitely when grounded
-                if (_verticalVelocity < 0.0f)
-                {
-                    _verticalVelocity = -2f;
-                }
+        //        // stop our velocity dropping infinitely when grounded
+        //        if (_verticalVelocity < 0.0f)
+        //        {
+        //            _verticalVelocity = -2f;
+        //        }
 
-                // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+        //        // Jump
+        //        if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+        //        {
+        //            // the square root of H * -2 * G = how much velocity needed to reach desired height
+        //            _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
-                }
+        //            // update animator if using character
+        //            if (_hasAnimator)
+        //            {
+        //                _animator.SetBool(_animIDJump, true);
+        //            }
+        //        }
 
-                // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
-                {
-                    _jumpTimeoutDelta -= Time.deltaTime;
-                }
-            }
-            else
-            {
-                // reset the jump timeout timer
-                _jumpTimeoutDelta = JumpTimeout;
+        //        // jump timeout
+        //        if (_jumpTimeoutDelta >= 0.0f)
+        //        {
+        //            _jumpTimeoutDelta -= Time.deltaTime;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // reset the jump timeout timer
+        //        _jumpTimeoutDelta = JumpTimeout;
 
-                // fall timeout
-                if (_fallTimeoutDelta >= 0.0f)
-                {
-                    _fallTimeoutDelta -= Time.deltaTime;
-                }
-                else
-                {
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
-                }
+        //        // fall timeout
+        //        if (_fallTimeoutDelta >= 0.0f)
+        //        {
+        //            _fallTimeoutDelta -= Time.deltaTime;
+        //        }
+        //        else
+        //        {
+        //            // update animator if using character
+        //            if (_hasAnimator)
+        //            {
+        //                _animator.SetBool(_animIDFreeFall, true);
+        //            }
+        //        }
 
-                // if we are not grounded, do not jump
-                _input.jump = false;
-            }
+        //        // if we are not grounded, do not jump
+        //        _input.jump = false;
+        //    }
 
-            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-            if (_verticalVelocity < _terminalVelocity)
-            {
-                _verticalVelocity += Gravity * Time.deltaTime;
-            }
-        }
+        //    // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+        //    if (_verticalVelocity < _terminalVelocity)
+        //    {
+        //        _verticalVelocity += Gravity * Time.deltaTime;
+        //    }
+        //}
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
@@ -402,6 +430,16 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        public void CanMove(bool canMove)
+        {
+            CharacterController cc = GetComponent<CharacterController>();
+            cc.Move(Vector3.zero);
+            cc.enabled = canMove;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.useGravity = canMove;
+            //canPlayerMove = canMove;
         }
     }
 }

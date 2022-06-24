@@ -58,11 +58,11 @@ namespace Photon.Chat.Demo
         protected internal ChatAppSettings chatAppSettings;
 
 
-        public GameObject missingAppIdErrorPanel;
-        public GameObject ConnectingLabel;
+        //public GameObject missingAppIdErrorPanel;
+        //public GameObject ConnectingLabel;
 
         public RectTransform ChatPanel;     // set in inspector (to enable/disable panel)
-        public GameObject UserIdFormPanel;
+        //public GameObject UserIdFormPanel;
         public InputField InputFieldChat;   // set in inspector
         public Text CurrentChannelText;     // set in inspector
         public Toggle ChannelToggleToInstantiate; // set in inspector
@@ -76,8 +76,8 @@ namespace Photon.Chat.Demo
 
         public bool ShowState = true;
         //public GameObject Title;
-        public Text StateText; // set in inspector
-        public Text UserIdText; // set in inspector
+        //public Text StateText; // set in inspector
+        //public Text UserIdText; // set in inspector
 
         // private static string WelcomeText = "Welcome to chat. Type \\help to list commands.";
         private static string HelpText = "\n    -- HELP --\n" +
@@ -117,13 +117,13 @@ namespace Photon.Chat.Demo
         {
             DontDestroyOnLoad(this.gameObject);
 
-            this.UserIdText.text = "";
-            this.StateText.text  = "";
-            this.StateText.gameObject.SetActive(true);
-            this.UserIdText.gameObject.SetActive(true);
+            //this.UserIdText.text = "";
+            //this.StateText.text  = "";
+            //this.StateText.gameObject.SetActive(true);
+            //this.UserIdText.gameObject.SetActive(true);
             //this.Title.SetActive(true);
             this.ChatPanel.gameObject.SetActive(false);
-            this.ConnectingLabel.SetActive(false);
+            //this.ConnectingLabel.SetActive(false);
             UserName = PhotonNetwork.LocalPlayer.NickName;
             if (string.IsNullOrEmpty(this.UserName))
             {
@@ -137,7 +137,7 @@ namespace Photon.Chat.Demo
             bool appIdPresent = !string.IsNullOrEmpty(this.chatAppSettings.AppIdChat);
 
             //this.missingAppIdErrorPanel.SetActive(!appIdPresent);
-            this.UserIdFormPanel.gameObject.SetActive(appIdPresent);
+            //this.UserIdFormPanel.gameObject.SetActive(appIdPresent);
             
             Connect();
             if (!appIdPresent)
@@ -148,7 +148,7 @@ namespace Photon.Chat.Demo
 
         public void Connect()
         {
-            this.UserIdFormPanel.gameObject.SetActive(false);
+            //this.UserIdFormPanel.gameObject.SetActive(false);
 
             this.chatClient = new ChatClient(this);
             #if !UNITY_WEBGL
@@ -160,7 +160,7 @@ namespace Photon.Chat.Demo
             this.ChannelToggleToInstantiate.gameObject.SetActive(false);
             Debug.Log("Connecting as: " + this.UserName);
 
-            this.ConnectingLabel.SetActive(true);
+            //this.ConnectingLabel.SetActive(true);
         }
 
         /// <summary>To avoid that the Editor becomes unresponsive, disconnect all Photon connections in OnDestroy.</summary>
@@ -188,14 +188,14 @@ namespace Photon.Chat.Demo
                 this.chatClient.Service(); // make sure to call this regularly! it limits effort internally, so calling often is ok!
             }
 
-            // check if we are missing context, which means we got kicked out to get back to the Photon Demo hub.
-            if ( this.StateText == null)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
+            //// check if we are missing context, which means we got kicked out to get back to the Photon Demo hub.
+            //if ( this.StateText == null)
+            //{
+            //    Destroy(this.gameObject);
+            //    return;
+            //}
 
-            this.StateText.gameObject.SetActive(this.ShowState); // this could be handled more elegantly, but for the demo it's ok.
+            //this.StateText.gameObject.SetActive(this.ShowState); // this could be handled more elegantly, but for the demo it's ok.
         }
 
 
@@ -371,9 +371,9 @@ namespace Photon.Chat.Demo
                 this.chatClient.Subscribe(this.ChannelsToJoinOnConnect, this.HistoryLengthToFetch);
             }
 
-            this.ConnectingLabel.SetActive(false);
+            //this.ConnectingLabel.SetActive(false);
 
-            this.UserIdText.text = "Connected as "+ this.UserName;
+            //this.UserIdText.text = "Connected as "+ this.UserName;
 
             this.ChatPanel.gameObject.SetActive(true);
 
@@ -404,7 +404,7 @@ namespace Photon.Chat.Demo
 
         public void OnDisconnected()
         {
-            this.ConnectingLabel.SetActive(false);
+            //this.ConnectingLabel.SetActive(false);
         }
 
         public void OnChatStateChange(ChatState state)
@@ -412,7 +412,7 @@ namespace Photon.Chat.Demo
             // use OnConnected() and OnDisconnected()
             // this method might become more useful in the future, when more complex states are being used.
 
-            this.StateText.text = state.ToString();
+            //this.StateText.text = state.ToString();
         }
 
         public void OnSubscribed(string[] channels, bool[] results)
