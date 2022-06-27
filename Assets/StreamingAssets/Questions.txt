@@ -1,0 +1,44 @@
+{  
+   "questions":[  
+      {  
+         "id":"1",
+	 "question":"How would you rate the overall training sessions?",
+	 "OptionA":"Excellent",
+	 "OptionB":"Good",
+	 "OptionC":"Ok",
+	 "OptionD":"Bad"
+      },
+      {  
+         "id":"2",
+	 "question":"How would you rate the content used in the training?",
+	 "OptionA":"Excellent",
+	 "OptionB":"Good",
+	 "OptionC":"Ok",
+	 "OptionD":"Bad"
+      },
+      {  
+         "id":"3",
+ 	 "question":"Were the sessions interactive and practical in its approach?",
+	 "OptionA":"Yes",
+	 "OptionB":"Maybe",
+	 "OptionC":"Cant Say",
+	 "OptionD":"No"
+      },
+      {  
+         "id":"4",
+	 "question":"Was the time allocated for the sessions adequate?",
+	 "OptionA":"Yes",
+	 "OptionB":"Maybe",
+	 "OptionC":"Cant Say",
+	 "OptionD":"No"
+      },
+      {  
+         "id":"5",
+	 "question":"How likely are you to recommend these sessions to your colleagues?",
+	 "OptionA":"Very Likely",
+	 "OptionB":"Likely",
+	 "OptionC":"Unlikely",
+	 "OptionD":"Very Unlikely"
+      }
+   ]
+}

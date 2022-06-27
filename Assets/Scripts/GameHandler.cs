@@ -13,7 +13,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 
 	static public GameHandler Instance;
 	//public AvatarHandler avatarHandler;
-	public GameObject FeedBackPanel;
+	public GameObject FeedBackCanvas;
 	#endregion
 
 	#region Private Fields
@@ -170,7 +170,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 
 	public void GetFeedbackFromUser()
 	{
-		FeedBackPanel.SetActive(true);
+		FeedBackCanvas.SetActive(true);
 
 	}
 

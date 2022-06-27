@@ -12,7 +12,7 @@ public class VideoManager : MonoBehaviour
     public bool isMute = false;
     public Sprite[] AudioToggle;
     public Image VideoMuteImage;
-    public AudioSource K2Message;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,18 +38,11 @@ public class VideoManager : MonoBehaviour
             //count = 0;
             PlayVideo(count);
         }
-        else
-        {
-            PlayAudio();
-        }
+        
         
     }
 
-    public void PlayAudio()
-    {
-        K2Message.Play();
-    }
-
+   
     public void ToggleAudio()
     {
         isMute = !isMute;
