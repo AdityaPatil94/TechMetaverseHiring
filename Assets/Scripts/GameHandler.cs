@@ -19,16 +19,18 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	#region Private Fields
 
 	private GameObject instance;
-
+	private GameObject WhiteBoard;
 	[Tooltip("The prefab to use for representing the player")]
 	[SerializeField]
 	private GameObject playerPrefab;
 
 	[SerializeField]
 	private GameObject Player;
-
+	[SerializeField]
+	private GameObject JoinButton;
 	[SerializeField]
 	private ThirdPersonController controller;
+	private bool isWhiteBoardActive;
 	#endregion
 
 	#region MonoBehaviour CallBacks
@@ -39,14 +41,21 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	void Start()
 	{
 		Instance = this;
-
+		isWhiteBoardActive = true;
+		if(JoinButton != null)
+        {
+			JoinButton.SetActive(false);
+			if (PhotonNetwork.IsMasterClient)
+			{
+				JoinButton.SetActive(true);
+			}
+		}
 		var avatarLoader = new AvatarLoader();
 		avatarLoader.OnCompleted += AvatarLoadingCompleted;
 		// in case we started this demo with the wrong scene being active, simply load the menu scene
 		if (!PhotonNetwork.IsConnected)
 		{
 			//SceneManager.LoadScene("PunBasics-Launcher");
-
 			return;
 		}
 
@@ -64,22 +73,33 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 				
 				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-				//AvatarHandler.Instance.LoadAvatar();
 				Vector3 Temp = new Vector3(Random.Range(-5, 5), 0f, Random.Range(-2, 6));
 				Player = PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
-				PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
+				WhiteBoard = PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
+				WhiteBoard.SetActive(false);
 			}
 			else
 			{
 
 				Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
 			}
-
-
 		}
-
+		
 	}
 
+	public void ToggleWhiteBoard()
+	{
+		isWhiteBoardActive = !isWhiteBoardActive;
+		if (isWhiteBoardActive)
+		{
+			WhiteBoard.SetActive(false);
+		}
+		else
+        {
+			WhiteBoard.SetActive(true);
+        }
+		
+	}
 	public void AvatarLoadingCompleted(object sender, CompletionEventArgs args)
     {
 		//Debug.Log();
