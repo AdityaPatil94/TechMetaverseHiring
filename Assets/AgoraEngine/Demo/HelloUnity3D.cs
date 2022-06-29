@@ -7,11 +7,12 @@ using agora_gaming_rtc;
 
 public class HelloUnity3D : MonoBehaviour
 {
+    public static HelloUnity3D Instance;
     //public InputField mChannelNameInputField;
     //public Text mShownMessage;
     //public Text versionText;
     public string channelName = "Test";
-    public Button joinChannel;
+    //public Button joinChannel;
     public Button leaveChannel;
     public Button muteButton;
 
@@ -25,10 +26,13 @@ public class HelloUnity3D : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
+        channelName = "Test";
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
         muteButton.enabled = false;
         CheckAppId();
+        //
     }
 
     // Use this for initialization
@@ -44,7 +48,7 @@ public class HelloUnity3D : MonoBehaviour
 				Permission.RequestUserPermission(Permission.Microphone);
 			}
 #endif
-        joinChannel.onClick.AddListener(JoinChannel);
+        //joinChannel.onClick.AddListener(JoinChannel);
         leaveChannel.onClick.AddListener(LeaveChannel);
         muteButton.onClick.AddListener(MuteButtonTapped);
 
@@ -161,6 +165,7 @@ public class HelloUnity3D : MonoBehaviour
 
         // mRtcEngine.SetChannelProfile (CHANNEL_PROFILE.CHANNEL_PROFILE_LIVE_BROADCASTING);
         // mRtcEngine.SetClientRole (CLIENT_ROLE.BROADCASTER);
+        JoinChannel();
     }
 
     private void CheckAppId()

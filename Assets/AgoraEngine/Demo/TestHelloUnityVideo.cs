@@ -19,7 +19,7 @@ public class TestHelloUnityVideo
 
     // a token is a channel key that works with a AppID that requires it. 
     // Generate one by your token server or get a temporary token from the developer console
-    private string token = "00626b40b22a58244b8a27cbb74f3a39518IABoKuYnz0eSEqqEh24rOC+m0l7CySG8m4HLON2EtY+6FXJftpAAAAAAEACDxJolI6G1YgEAAQAkobVi";
+    private string token = "00626b40b22a58244b8a27cbb74f3a39518IABudZuKGC0O9MLLXL7TJvao+vZt1qQzjMX5E04If37hgXJftpAAAAAAEAC0+3p1QLm9YgEAAQBAub1i";
 
     // load agora engine
     public void loadEngine(string appId)

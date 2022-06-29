@@ -27,6 +27,8 @@ public class TestHome : MonoBehaviour
     [SerializeField]
     private string AppID = "your_appid";
     public string ChannelName = "Test Call";
+    public bool isVideoOn;
+
     void Awake()
     {
 #if (UNITY_2018_3_OR_NEWER && UNITY_ANDROID)
@@ -40,8 +42,9 @@ public class TestHome : MonoBehaviour
 
     void Start()
     {
+        isVideoOn = true;
         CheckAppId();
-        onJoinButtonClicked();
+        //onJoinButtonClicked();
     }
 
     void Update()
@@ -88,6 +91,7 @@ public class TestHome : MonoBehaviour
 
     public void onJoinButtonClicked()
     {
+        HelloUnity3D.Instance.LeaveChannel();
         // get parameters (channel name, channel profile, etc.)
         //GameObject go = GameObject.Find("ChannelName");
         //InputField field = go.GetComponent<InputField>();
@@ -108,14 +112,15 @@ public class TestHome : MonoBehaviour
 
     public void onLeaveButtonClicked()
     {
+        HelloUnity3D.Instance.JoinChannel();
         if (!ReferenceEquals(app, null))
         {
             app.leave(); // leave channel
             app.unloadEngine(); // delete engine
             app = null; // delete app
-            SceneManager.LoadScene(HomeSceneName, LoadSceneMode.Single);
+            //SceneManager.LoadScene(HomeSceneName, LoadSceneMode.Single);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -143,6 +148,21 @@ public class TestHome : MonoBehaviour
         if (!ReferenceEquals(app, null))
         {
             app.unloadEngine();
+        }
+    }
+
+    //this function called from unity Editor 
+    public void ToggleVideo()
+    {
+        isVideoOn = !isVideoOn;
+
+        if (isVideoOn)
+        {
+            onLeaveButtonClicked();
+        }
+        else
+        {
+            onJoinButtonClicked();
         }
     }
 }

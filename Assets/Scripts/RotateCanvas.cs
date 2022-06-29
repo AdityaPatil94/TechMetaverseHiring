@@ -14,6 +14,7 @@ public class RotateCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Camera != null)
         transform.LookAt(Camera.transform);
     }
 }
