@@ -15,8 +15,18 @@ namespace Photon.Pun.Demo.Asteroids
         public const string PLAYER_READY = "IsPlayerReady";
         public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
 
+        Color color1;
+        Color color2;
+        Color color3;
+        Color color4;
+        Color color5;
+        Color color6;
+        Color color7;
+        Color color8;
+
         public static Color GetColor(int colorChoice)
         {
+
             switch (colorChoice)
             {
                 case 0: return Color.red;
