@@ -4,12 +4,23 @@ using UnityEngine;
 using UnityEngine.AI;
 public class BotHandler : MonoBehaviour
 {
-    public AudioSource K2Message;
+    public AudioSource K2MsgAudioSource;
     public NavMeshAgent BotNavMesh;
     public Transform BotDestination;
+    public AudioClip[] AudioClipList;
+
+    public delegate void OnloopPointReached();
+    public static event OnloopPointReached AudioloopPointReached;
+    public delegate void OnAudioClipListOver();
+    public static event OnAudioClipListOver AudioClipListOver;
+
+    int count = 0;
 
     private void Start()
     {
+        VideoManager.VideoClipListOver += NextAudio;
+        AudioloopPointReached += NextAudio;
+
         //SetBotDestintion();
     }
 
@@ -19,14 +30,45 @@ public class BotHandler : MonoBehaviour
         {
             SetBotDestintion();
         }
+
+        if(K2MsgAudioSource.clip!=null)
+        {
+            if (K2MsgAudioSource.clip.length == K2MsgAudioSource.time)
+            {
+                Debug.Log("Audio clip ended");
+                K2MsgAudioSource.Stop();
+                K2MsgAudioSource.time = 0;
+                AudioloopPointReached.Invoke();
+            }
+        }
+        
+
     }
     public void SetBotDestintion()
     {
         BotNavMesh.SetDestination(BotDestination.position);
     }
-    public void PlayAudio()
+    public void PlayAudio(int ClipNumber)
     {
-        K2Message.Play();
+        K2MsgAudioSource.clip = AudioClipList[ClipNumber];
+        K2MsgAudioSource.Play();
+    }
+
+    public void NextAudio()
+    {
+        Debug.Log("Play Next Audio" + AudioClipList.Length);
+
+        //audio clip count
+        
+        if(count < AudioClipList.Length)
+        {
+            PlayAudio(count);
+            count++;
+        }
+        else
+        {
+            AudioClipListOver.Invoke();
+        }
     }
 
 }

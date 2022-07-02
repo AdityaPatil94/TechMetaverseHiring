@@ -11,7 +11,7 @@ using TMPro;
 
 namespace StarterAssets
 {
-    [RequireComponent(typeof(CharacterController))]
+    //[RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
@@ -79,7 +79,9 @@ namespace StarterAssets
         public bool LockCameraPosition = false;
 
         public TextMeshProUGUI PlayerName;
-        //public bool canPlayerMove = true;
+        public bool canPlayerMove = true;
+        public bool isPlayerSitting;
+         
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -133,26 +135,15 @@ namespace StarterAssets
         private void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
-            //var avatarLoader = new AvatarLoader();
-            //AvatarHandler.Instance.avatarLoader.OnCompleted += SetPlayer;
             // get a reference to our main camera
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
-
             PV = GetComponent<PhotonView>();
         }
 
-        //public void SetPlayer(object sender, CompletionEventArgs args)
-        //{
-        //    Debug.Log("Is Mine Player");
-        //    if (photonView.IsMine)
-        //    {
-        //        Debug.Log("Mine Player");
-        //        //AvatarHandler.Instance.SetPlayer(this.gameObject);
-        //    }
-        //}
+       
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
@@ -196,7 +187,7 @@ namespace StarterAssets
 
             GroundedCheck();
             //JumpAndGravity();
-            //if(canPlayerMove)
+            if(canPlayerMove)
             {
                 Move();
             }
@@ -434,12 +425,8 @@ namespace StarterAssets
 
         public void CanMove(bool canMove)
         {
-            CharacterController cc = GetComponent<CharacterController>();
-            cc.Move(Vector3.zero);
-            cc.enabled = canMove;
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.useGravity = canMove;
-            //canPlayerMove = canMove;
+            isPlayerSitting = !canMove;
+            canPlayerMove = canMove;
         }
     }
 }

@@ -30,6 +30,8 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	private GameObject JoinButton;
 	[SerializeField]
 	private ThirdPersonController controller;
+	[SerializeField]
+	private Vector3 SpawnPosition;
 	private bool isWhiteBoardActive;
 	#endregion
 
@@ -73,7 +75,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 				
 				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-				Vector3 Temp = new Vector3(Random.Range(-5, 5), 0f, Random.Range(-2, 6));
+				Vector3 Temp = SpawnPosition + new Vector3(Random.Range(-2,2), 0f, Random.Range(-8, 2));
 				Player = PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
 				WhiteBoard = PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
 				WhiteBoard.SetActive(false);

@@ -344,7 +344,6 @@ GameObject:
   - component: {fileID: 28523746411314570}
   - component: {fileID: 7715318348358558949}
   - component: {fileID: 5435390902497492108}
-  - component: {fileID: 1443779824140834032}
   m_Layer: 8
   m_Name: PlayerController
   m_TagString: Player
@@ -457,6 +456,8 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   PlayerName: {fileID: 2780052102201402640}
+  canPlayerMove: 1
+  isPlayerSitting: 0
 --- !u!114 &7821718748543945972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,22 +699,6 @@ MonoBehaviour:
   OwnerActorNum: 0
   Test: {fileID: 0}
   stringArray: []
---- !u!54 &1443779824140834032
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30465930551256580}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &99093376224165079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,7 +3706,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
