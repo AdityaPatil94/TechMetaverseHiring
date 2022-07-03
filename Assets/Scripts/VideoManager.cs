@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using YoutubePlayer;
+using Photon.Pun;
 
 public class VideoManager : MonoBehaviour
 {
@@ -17,12 +19,17 @@ public class VideoManager : MonoBehaviour
     public bool HasURLVideoPlyed;
     public delegate void OnVideoClipListOver();
     public static event OnVideoClipListOver VideoClipListOver;
+    public GameObject K2botPrefab;
+    GameObject temp;
     // Start is called before the first frame update
     void Start()
     {
+        temp = Instantiate(K2botPrefab, new Vector3(2,0,8), Quaternion.Euler(0,180,0));
+        temp.SetActive(false);
         BotHandler.AudioClipListOver += AudioClipReachedEndPoint;
         CustomVideoPlayer.loopPointReached += EndPointReached;
-        PlayVideo(count);
+        //PlayVideo(count);
+        //AudioClipReachedEndPoint();
     }
 
     public void PlayVideo(int VideoNumber)
@@ -30,6 +37,11 @@ public class VideoManager : MonoBehaviour
         CustomVideoPlayer.clip = VideoClipList[VideoNumber];
         CustomVideoPlayer.Play();
         //Debug.Log("Playing .." + CustomVideoPlayer.clip.name);
+    }
+
+    public void StopVideo()
+    {
+        CustomVideoPlayer.Stop();
     }
 
     public void EndPointReached(VideoPlayer vp)
@@ -41,18 +53,20 @@ public class VideoManager : MonoBehaviour
         }
         else if(!HasURLVideoPlyed)
         {
+            temp.SetActive(true);
             HasURLVideoPlyed = true;
             VideoClipListOver.Invoke();
         }
     }
-    
-    public void AudioClipReachedEndPoint()
+
+    async public void AudioClipReachedEndPoint()
     {
         Debug.Log("Play video from URL");
         {
-            CustomVideoPlayer.source = VideoSource.Url;
-            CustomVideoPlayer.url = VideoSourceLink;
-            CustomVideoPlayer.Play();
+            //CustomVideoPlayer.source = VideoSource.Url;
+            //CustomVideoPlayer.url = VideoSourceLink;
+            CustomVideoPlayer = GetComponent<VideoPlayer>();
+            await CustomVideoPlayer.PlayYoutubeVideoAsync(VideoSourceLink);
         }
     }
    
@@ -68,6 +82,31 @@ public class VideoManager : MonoBehaviour
         else
         {
             VideoMuteImage.sprite = AudioToggle[1];
+        }
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            if(other.GetComponent<PhotonView>().IsMine)
+            {
+                PlayVideo(count);
+            }
+            Debug.Log("Play Video");
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (other.GetComponent<PhotonView>().IsMine)
+            {
+                StopVideo();
+            }
+                Debug.Log("Stop Video");
         }
     }
 }

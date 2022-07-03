@@ -19,7 +19,7 @@ public class TestHelloUnityVideo
 
     // a token is a channel key that works with a AppID that requires it. 
     // Generate one by your token server or get a temporary token from the developer console
-    private string token = "00626b40b22a58244b8a27cbb74f3a39518IADxrMk1V83Cn2hDHkBHBFBzkwarp7Z10RIxJrsgRxnYtHJftpAAAAAAEACiqr7MwdO/YgEAAQDB079i";
+    private string token = "00626b40b22a58244b8a27cbb74f3a39518IAD2zMPMtZV7rqsELRlismGq3jdoesRW5NqenS2AT0zN0HJftpAAAAAAEABVqCrXDofBYgEAAQANh8Fi";
 
     // load agora engine
     public void loadEngine(string appId)
@@ -244,17 +244,18 @@ public class TestHelloUnityVideo
 
         // make the object draggable
         go.AddComponent<UIElementDragger>();
-        GameObject canvas = GameObject.Find("Canvas");
+        //GameObject canvas = GameObject.Find("Canvas");
+        GameObject canvas = GameObject.FindGameObjectWithTag("VideoPanel");
         if (canvas != null)
         {
             go.transform.parent = canvas.transform;
         }
         // set up transform
         go.transform.Rotate(0f, 0.0f, 180.0f);
-        float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
-        float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        go.transform.localPosition = new Vector3(xPos, yPos, 0f);
-        go.transform.localScale = new Vector3(3f, 4f, 1f);
+        //float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
+        //float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
+        //go.transform.localPosition = new Vector3(xPos, yPos, 0f);
+        go.transform.localScale = new Vector3(1f, 1f, 1f);
 
         // configure videoSurface
         VideoSurface videoSurface = go.AddComponent<VideoSurface>();

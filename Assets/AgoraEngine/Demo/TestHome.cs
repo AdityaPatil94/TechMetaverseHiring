@@ -91,7 +91,7 @@ public class TestHome : MonoBehaviour
 
     public void onJoinButtonClicked()
     {
-        HelloUnity3D.Instance.LeaveChannel();
+        //HelloUnity3D.Instance.LeaveChannel();
         // get parameters (channel name, channel profile, etc.)
         //GameObject go = GameObject.Find("ChannelName");
         //InputField field = go.GetComponent<InputField>();
@@ -112,7 +112,7 @@ public class TestHome : MonoBehaviour
 
     public void onLeaveButtonClicked()
     {
-        HelloUnity3D.Instance.JoinChannel();
+        //HelloUnity3D.Instance.JoinChannel();
         if (!ReferenceEquals(app, null))
         {
             app.leave(); // leave channel

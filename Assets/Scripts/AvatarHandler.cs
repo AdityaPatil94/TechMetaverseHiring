@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using ReadyPlayerMe;
 using System;
 using Photon.Pun;
+using StarterAssets;
 
 public class AvatarHandler : MonoBehaviourPunCallbacks
 {
@@ -46,7 +47,9 @@ public class AvatarHandler : MonoBehaviourPunCallbacks
     {
         Debug.Log($"{args.Avatar.name} is imported!");
         Player = args.Avatar.gameObject;
+        GetComponent<ThirdPersonController>().canPlayerMove = true;
         SetPlayer(gameObject);
+        GameHandler.Instance.ActivateJoinButton();
     }
 
     [PunRPC]

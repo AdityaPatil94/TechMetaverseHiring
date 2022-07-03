@@ -79,7 +79,7 @@ namespace StarterAssets
         public bool LockCameraPosition = false;
 
         public TextMeshProUGUI PlayerName;
-        public bool canPlayerMove = true;
+        public bool canPlayerMove = false;
         public bool isPlayerSitting;
          
         // cinemachine

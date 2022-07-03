@@ -16,7 +16,7 @@ public class BotHandler : MonoBehaviour
 
     int count = 0;
 
-    private void Start()
+    private void Awake()
     {
         VideoManager.VideoClipListOver += NextAudio;
         AudioloopPointReached += NextAudio;

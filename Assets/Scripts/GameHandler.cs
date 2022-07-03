@@ -47,10 +47,6 @@ public class GameHandler : MonoBehaviourPunCallbacks
 		if(JoinButton != null)
         {
 			JoinButton.SetActive(false);
-			if (PhotonNetwork.IsMasterClient)
-			{
-				JoinButton.SetActive(true);
-			}
 		}
 		var avatarLoader = new AvatarLoader();
 		avatarLoader.OnCompleted += AvatarLoadingCompleted;
@@ -89,6 +85,17 @@ public class GameHandler : MonoBehaviourPunCallbacks
 		
 	}
 
+	public void ActivateJoinButton()
+    {
+		if (JoinButton != null)
+        {
+			if (PhotonNetwork.IsMasterClient)
+			{
+				JoinButton.SetActive(true);
+			}
+		}
+			
+	}
 	public void ToggleWhiteBoard()
 	{
 		isWhiteBoardActive = !isWhiteBoardActive;

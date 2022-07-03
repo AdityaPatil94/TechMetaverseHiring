@@ -456,7 +456,7 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   PlayerName: {fileID: 2780052102201402640}
-  canPlayerMove: 1
+  canPlayerMove: 0
   isPlayerSitting: 0
 --- !u!114 &7821718748543945972
 MonoBehaviour:
