@@ -428,5 +428,10 @@ namespace StarterAssets
             isPlayerSitting = !canMove;
             canPlayerMove = canMove;
         }
+
+        public void ToggleMovement(bool canMove)
+        {
+            canPlayerMove = canMove;
+        }
     }
 }

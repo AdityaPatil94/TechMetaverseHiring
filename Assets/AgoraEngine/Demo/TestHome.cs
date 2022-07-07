@@ -1,7 +1,8 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
-#if(UNITY_2018_3_OR_NEWER && UNITY_ANDROID)
+using System;
+#if (UNITY_2018_3_OR_NEWER && UNITY_ANDROID)
 using UnityEngine.Android;
 #endif
 using System.Collections;
@@ -28,6 +29,7 @@ public class TestHome : MonoBehaviour
     private string AppID = "your_appid";
     public string ChannelName = "Test Call";
     public bool isVideoOn;
+    public Button muteButton;
 
     void Awake()
     {
@@ -43,8 +45,28 @@ public class TestHome : MonoBehaviour
     void Start()
     {
         isVideoOn = true;
+        muteButton.onClick.AddListener(MuteButtonTapped);
         CheckAppId();
         //onJoinButtonClicked();
+    }
+
+    bool isMuted = false;
+    private void MuteButtonTapped()
+    {
+        if(!isVideoOn)
+        {
+            //isMuted = !isMuted;
+            //int volume = isMuted ? 0 : 100;
+            //app.MuteVideo(volume);
+
+            muteButton.interactable = false;
+        }
+        else
+        {
+            muteButton.interactable = true;
+
+        }
+
     }
 
     void Update()
@@ -91,7 +113,8 @@ public class TestHome : MonoBehaviour
 
     public void onJoinButtonClicked()
     {
-        //HelloUnity3D.Instance.LeaveChannel();
+        //temp
+        HelloUnity3D.Instance.LeaveChannel();
         // get parameters (channel name, channel profile, etc.)
         //GameObject go = GameObject.Find("ChannelName");
         //InputField field = go.GetComponent<InputField>();
@@ -112,12 +135,12 @@ public class TestHome : MonoBehaviour
 
     public void onLeaveButtonClicked()
     {
-        //HelloUnity3D.Instance.JoinChannel();
+        HelloUnity3D.Instance.JoinChannel();
         if (!ReferenceEquals(app, null))
         {
             app.leave(); // leave channel
             //app.unloadEngine(); // delete engine
-            app = null; // delete app
+            //app = null; // delete app
             //SceneManager.LoadScene(HomeSceneName, LoadSceneMode.Single);
         }
         //Destroy(gameObject);
@@ -158,10 +181,12 @@ public class TestHome : MonoBehaviour
 
         if (isVideoOn)
         {
+            MuteButtonTapped();
             onLeaveButtonClicked();
         }
         else
         {
+            MuteButtonTapped();
             onJoinButtonClicked();
         }
     }

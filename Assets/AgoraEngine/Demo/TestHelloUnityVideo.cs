@@ -19,7 +19,7 @@ public class TestHelloUnityVideo
 
     // a token is a channel key that works with a AppID that requires it. 
     // Generate one by your token server or get a temporary token from the developer console
-    private string token = "00626b40b22a58244b8a27cbb74f3a39518IAD2zMPMtZV7rqsELRlismGq3jdoesRW5NqenS2AT0zN0HJftpAAAAAAEABVqCrXDofBYgEAAQANh8Fi";
+    private string token = "00626b40b22a58244b8a27cbb74f3a39518IAAjq4GOMwuHqe4rX8yuDMkI5Gk1lZrvp+ujLDgkoQcL+XJftpAAAAAAEAAE2jd4hNvDYgEAAQCE28Ni";
 
     // load agora engine
     public void loadEngine(string appId)
@@ -40,6 +40,14 @@ public class TestHelloUnityVideo
         mRtcEngine.SetLogFilter(LOG_FILTER.DEBUG | LOG_FILTER.INFO | LOG_FILTER.WARNING | LOG_FILTER.ERROR | LOG_FILTER.CRITICAL);
     }
 
+    int isMuted = 1;
+    public void MuteVideo(int Volume)
+    {
+        
+        Debug.Log("Video Mute function" + Volume);
+        mRtcEngine.AdjustAudioMixingVolume(Volume);
+        //mRtcEngine.AdjustPlaybackSignalVolume(Volume);
+    }
     public void join(string channel)
     {
         Debug.Log("calling join (channel = " + channel + ")");
@@ -246,6 +254,7 @@ public class TestHelloUnityVideo
         go.AddComponent<UIElementDragger>();
         //GameObject canvas = GameObject.Find("Canvas");
         GameObject canvas = GameObject.FindGameObjectWithTag("VideoPanel");
+        Debug.LogError("Inside MakeSurfaceCanvas"+ canvas.name);
         if (canvas != null)
         {
             go.transform.parent = canvas.transform;

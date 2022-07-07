@@ -18,7 +18,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 
 	#region Private Fields
 
-	private GameObject instance;
+	//private GameObject instance;
 	private GameObject WhiteBoard;
 	[Tooltip("The prefab to use for representing the player")]
 	[SerializeField]
@@ -72,7 +72,7 @@ public class GameHandler : MonoBehaviourPunCallbacks
 				
 				// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 				Vector3 Temp = SpawnPosition + new Vector3(Random.Range(-2,2), 0f, Random.Range(-8, 2));
-				Player = PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.identity, 0);
+				Player = PhotonNetwork.Instantiate(this.playerPrefab.name, Temp, Quaternion.Euler(0,180,0), 0);
 				WhiteBoard = PhotonNetwork.Instantiate("Whiteboard", Vector3.zero, Quaternion.identity, 0);
 				WhiteBoard.SetActive(false);
 			}
@@ -119,11 +119,11 @@ public class GameHandler : MonoBehaviourPunCallbacks
 	void Update()
 	{
 		// "back" button of phone equals "Escape". quit app if that's pressed
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			//QuitApplication();
-			GetFeedbackFromUser();
-		}
+		//if (Input.GetKeyDown(KeyCode.Escape))
+		//{
+		//	//QuitApplication();
+		//	GetFeedbackFromUser();
+		//}
 	}
 
 	#endregion
@@ -179,10 +179,10 @@ public class GameHandler : MonoBehaviourPunCallbacks
 		PhotonNetwork.LeaveRoom();
 	}
 
-	public void StopPlayerInput()
+	public void TogglePlayerMovement(bool canMove)
     {
-		//controller = Player.GetComponentInChildren<ThirdPersonController>();
-		//controller.CanMove(false);
+		controller = Player.GetComponentInChildren<ThirdPersonController>();
+		controller.ToggleMovement(canMove);
 		Debug.Log("Typing...");
     }
 

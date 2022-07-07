@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using StarterAssets;
 using UnityEngine.UI;
 public class WhiteBoardInputHandler : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class WhiteBoardInputHandler : MonoBehaviour
         if (PV.IsMine)
         {
             WhiteBoardText.text = WhiteBoardInputField.text;
+            WhiteBoardInputField.text = "";
             PV.RPC("DisplayLocalText", RpcTarget.OthersBuffered, WhiteBoardText.text);
         }
     }
@@ -49,5 +51,10 @@ public class WhiteBoardInputHandler : MonoBehaviour
     {
         Debug.Log("RPC PUN"+ WhiteBoardInputField.text);
         WhiteBoardText.text = Messgae;
+    }
+
+    public void TogglePlayerMovement(bool canMove)
+    {
+        GameHandler.Instance.TogglePlayerMovement(canMove);
     }
 }

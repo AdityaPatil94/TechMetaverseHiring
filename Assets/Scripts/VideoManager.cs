@@ -41,7 +41,7 @@ public class VideoManager : MonoBehaviour
 
     public void StopVideo()
     {
-        CustomVideoPlayer.Stop();
+        CustomVideoPlayer.Pause();
     }
 
     public void EndPointReached(VideoPlayer vp)

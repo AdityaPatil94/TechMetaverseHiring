@@ -15,7 +15,7 @@ public class HelloUnity3D : MonoBehaviour
     //public Button joinChannel;
     public Button leaveChannel;
     public Button muteButton;
-
+    public bool HasJoinedCall;
     private IRtcEngine mRtcEngine = null;
 
     // PLEASE KEEP THIS App ID IN SAFE PLACE
@@ -31,6 +31,7 @@ public class HelloUnity3D : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
         muteButton.enabled = false;
+
         CheckAppId();
         //
     }
@@ -68,7 +69,7 @@ public class HelloUnity3D : MonoBehaviour
             string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
             Debug.Log(leaveChannelMessage);
             //mShownMessage.GetComponent<Text>().text = (leaveChannelMessage);
-            muteButton.enabled = false;
+            //muteButton.enabled = false;
             // reset the mute button state
             if (isMuted)
             {
@@ -126,13 +127,13 @@ public class HelloUnity3D : MonoBehaviour
         {
             string rtcStatsMessage = string.Format("onRtcStats callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}, tx(a) kbps: {5}, rx(a) kbps: {6} users {7}",
                 stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate, stats.txAudioKBitRate, stats.rxAudioKBitRate, stats.userCount);
-            Debug.Log(rtcStatsMessage);
+            //Debug.Log(rtcStatsMessage);
 
             int lengthOfMixingFile = mRtcEngine.GetAudioMixingDuration();
             int currentTs = mRtcEngine.GetAudioMixingCurrentPosition();
 
             string mixingMessage = string.Format("Mixing File Meta {0}, {1}", lengthOfMixingFile, currentTs);
-            Debug.Log(mixingMessage);
+            //Debug.Log(mixingMessage);
         };
 
         mRtcEngine.OnAudioRouteChanged += (AUDIO_ROUTE route) =>
@@ -200,12 +201,13 @@ public class HelloUnity3D : MonoBehaviour
         //{
         //    return;
         //}
-
+        HasJoinedCall = true;
         mRtcEngine.JoinChannel(channelName, "extra", 0);
     }
 
     public void LeaveChannel()
     {
+        HasJoinedCall = false;
         mRtcEngine.LeaveChannel();
         //string channelName = mChannelNameInputField.text.Trim();
         //Debug.Log(string.Format("left channel name {0}", channelName));
@@ -230,13 +232,18 @@ public class HelloUnity3D : MonoBehaviour
     bool isMuted = false;
     void MuteButtonTapped()
     {
-        string labeltext = isMuted ? "Mute" : "Unmute";
-        Text label = muteButton.GetComponentInChildren<Text>();
-        if (label != null)
+        if(HasJoinedCall)
         {
-            label.text = labeltext;
+            Debug.Log("Inside Audio Mute");
+            string labeltext = isMuted ? "Mute" : "Unmute";
+            Text label = muteButton.GetComponentInChildren<Text>();
+            if (label != null)
+            {
+                label.text = labeltext;
+            }
+            isMuted = !isMuted;
+            mRtcEngine.EnableLocalAudio(!isMuted);
+
         }
-        isMuted = !isMuted;
-        mRtcEngine.EnableLocalAudio(!isMuted);
     }
 }

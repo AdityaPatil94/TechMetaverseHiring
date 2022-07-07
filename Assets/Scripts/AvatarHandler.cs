@@ -18,6 +18,9 @@ public class AvatarHandler : MonoBehaviourPunCallbacks
 	public GameObject Test;
     public string[] stringArray;
     string actor_S, AvatarURL_S;
+    public Slider LoadingSlider;
+    public GameObject PlayerNameTag;
+    public GameObject LoadingCanvas;
 
     private void Start()
     {
@@ -50,6 +53,8 @@ public class AvatarHandler : MonoBehaviourPunCallbacks
         GetComponent<ThirdPersonController>().canPlayerMove = true;
         SetPlayer(gameObject);
         GameHandler.Instance.ActivateJoinButton();
+        PlayerNameTag.SetActive(true);
+        LoadingCanvas.SetActive(false);
     }
 
     [PunRPC]
@@ -84,7 +89,8 @@ public class AvatarHandler : MonoBehaviourPunCallbacks
     }
     private void AvatarLoadingProgressChanged(object sender, ProgressChangeEventArgs args)
     {
-           //Debug.Log($"Progress: {args.Progress * 100}%");
+        //Debug.Log($"Progress: {args.Progress * 100}%");
+        LoadingSlider.value = args.Progress;
     }
 
     public void SetPlayer(GameObject spawnedPlayer)
