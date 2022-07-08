@@ -22743,7 +22743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2962043425226404011, guid: adca548cf9f2a6e41b7d94ff36009e52, type: 3}
       propertyPath: m_DataSource
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2962043425226404011, guid: adca548cf9f2a6e41b7d94ff36009e52, type: 3}
       propertyPath: m_AspectRatio
@@ -38455,7 +38455,6 @@ MonoBehaviour:
   LockCameraPosition: 0
   PlayerName: {fileID: 2780052102062773329}
   canPlayerMove: 1
-  isPlayerSitting: 0
 --- !u!143 &30465930413676367
 CharacterController:
   m_ObjectHideFlags: 0

@@ -7,25 +7,30 @@ using StarterAssets;
 public class SittingManager : MonoBehaviour
 {
     public Transform targetPosition;
+    public bool isChairEmpty;
     public void MakePlayerSit()
     {
-        Debug.Log("On pointer Down Event");
         GameObject[] characters = GameObject.FindGameObjectsWithTag("Player");
-        
-        foreach(GameObject go in characters )
+        foreach (GameObject go in characters)
         {
             PhotonView pv = go.GetComponent<PhotonView>();
-            if(pv.IsMine)
+            if (pv.IsMine)
             {
-                if( !go.GetComponent<ThirdPersonController>().isPlayerSitting)
+                if (isChairEmpty)
                 {
                     go.transform.GetComponentInParent<Transform>().SetPositionAndRotation(targetPosition.position, targetPosition.rotation);
                     go.GetComponent<Animator>().SetBool("Sit", true);
                     go.GetComponent<ThirdPersonController>().CanMove(false);
+                    isChairEmpty = false;
                     return;
                 }
-                
             }
         }
+    }
+
+    [PunRPC]
+    public void ChairStatus()
+    {
+
     }
 }

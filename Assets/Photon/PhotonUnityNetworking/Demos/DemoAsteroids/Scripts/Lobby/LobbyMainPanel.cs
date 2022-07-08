@@ -53,7 +53,7 @@ namespace Photon.Pun.Demo.Asteroids
             roomListEntries = new Dictionary<string, GameObject>();
             
             PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
-            AvatarLink.text = "https://d1a370nemizbjq.cloudfront.net/86ead872-ae8a-4e5e-993d-dbe362814527.glb";
+            AvatarLink.text = "https://d1a370nemizbjq.cloudfront.net/92006fc5-800e-41bc-be21-ae1d1df21c63.glb";
         }
 
         #endregion

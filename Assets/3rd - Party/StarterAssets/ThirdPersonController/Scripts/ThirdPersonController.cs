@@ -80,7 +80,7 @@ namespace StarterAssets
 
         public TextMeshProUGUI PlayerName;
         public bool canPlayerMove = false;
-        public bool isPlayerSitting;
+
          
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -425,7 +425,7 @@ namespace StarterAssets
 
         public void CanMove(bool canMove)
         {
-            isPlayerSitting = !canMove;
+            
             canPlayerMove = canMove;
         }
 
