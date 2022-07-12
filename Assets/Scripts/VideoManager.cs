@@ -20,11 +20,12 @@ public class VideoManager : MonoBehaviour
     public delegate void OnVideoClipListOver();
     public static event OnVideoClipListOver VideoClipListOver;
     public GameObject K2botPrefab;
+    public Vector3 BotSpawnPosition;
     GameObject temp;
     // Start is called before the first frame update
     void Start()
     {
-        temp = Instantiate(K2botPrefab, new Vector3(2,0,8), Quaternion.Euler(0,180,0));
+        temp = Instantiate(K2botPrefab, BotSpawnPosition, Quaternion.Euler(0,0,0));
         temp.SetActive(false);
         BotHandler.AudioClipListOver += AudioClipReachedEndPoint;
         CustomVideoPlayer.loopPointReached += EndPointReached;
